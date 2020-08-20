@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialise site infrastructure — init_site • pkgdown</title>
+<title>Test case: sexpr — test-sexpr-title • pkgdown</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,9 +52,8 @@
 
 
 
-<meta property="og:title" content="Initialise site infrastructure — init_site" />
-<meta property="og:description" content="This creates the output directory (docs/), a machine readable description
-of the site, and copies CSS/JS assets and extra files." />
+<meta property="og:title" content="Test case: sexpr — test-sexpr-title" />
+<meta property="og:description" content="Test case: sexpr" />
 <meta property="og:image" content="https://pkgdown.r-lib.org/logo.png" />
 
 
@@ -193,56 +192,29 @@ of the site, and copies CSS/JS assets and extra files." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialise site infrastructure</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/pkgdown/blob/master/R/init.R'><code>R/init.R</code></a></small>
-    <div class="hidden name"><code>init_site.Rd</code></div>
+    <h1>Test case: sexpr</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/pkgdown/blob/master/R/test.R'><code>R/test.R</code></a></small>
+    <div class="hidden name"><code>test-sexpr-title.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates the output directory (<code>docs/</code>), a machine readable description
-of the site, and copies CSS/JS assets and extra files.</p>
+    <p>Test case: sexpr</p>
     </div>
 
-    <pre class="usage"><span class='fu'>init_site</span>(pkg = <span class='st'>"."</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>pkg</th>
-      <td><p>Path to package.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="build-ignored-files"><a class="anchor" href="#build-ignored-files"></a>Build-ignored files</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    
-
-<p>We recommend using <code><a href='https://usethis.r-lib.org/reference/use_pkgdown.html'>usethis::use_pkgdown()</a></code> to build-ignore <code>docs/</code> and
-<code>_pkgdown.yml</code>. If use another directory, or create the site manually,
-you'll need to add them to <code>.Rbuildignore</code> yourself. A <code>NOTE</code> about
-an unexpected file during <code>R CMD CHECK</code> is an indication you have not
-correctly ignored these files.</p>
-    <h2 class="hasAnchor" id="custom-css-js"><a class="anchor" href="#custom-css-js"></a>Custom CSS/JS</h2>
-
-    
-
-<p>If you want to do minor customisation of your pkgdown site, the easiest
-way is to add <code>pkgdown/extra.css</code> and <code>pkgdown/extra.js</code>. These
-will be automatically copied to <code>docs/</code> and inserted into the
-<code>&lt;HEAD&gt;</code> after the default pkgdown CSS and JS.</p>
-    <h2 class="hasAnchor" id="favicon"><a class="anchor" href="#favicon"></a>Favicon</h2>
-
-    
-
-<p>Favicons are built automatically from a logo PNG or SVG by <code>init_site()</code> and
-copied to <code>pkgdown/favicon</code>.</p>
-    <h2 class="hasAnchor" id="-"><a class="anchor" href="#-"></a>404</h2>
-
-    
-
-<p>pkgdown creates a default 404 page (<code>404.html</code>). You can customize 404
-page content using <code>.github/404.md</code>.</p>
+    <div class='dont-index'><p>Other tests: 
+<code><a href='index.html'>index</a></code>,
+<code><a href='test-crayon.html'>test-crayon</a></code>,
+<code><a href='test-dont.html'>test-dont</a></code>,
+<code><a href='test-figures.html'>test-figures</a></code>,
+<code><a href='test-links.html'>test-links</a></code>,
+<code><a href='test-lists.html'>test-lists</a></code>,
+<code><a href='test-output-styles.html'>test-output-styles</a></code>,
+<code><a href='test-params.html'>test-params</a></code>,
+<code><a href='test-verbatim.html'>test-verbatim</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
