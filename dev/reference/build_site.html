@@ -94,9 +94,15 @@ clean_site() first to clean up orphan files." />
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -346,30 +352,27 @@ text:</p><pre>authors:
 <li><p>The indexing of the site by search engines.</p></li>
 </ul>
 
-<p>There are currently three possible development modes:</p><ul>
-<li><p><strong>release</strong>: site written to <code>docs/</code>, the version gets the default
-colouring, and no message.</p></li>
-<li><p><strong>development</strong>: written to <code>docs/dev/</code>, the version gets a danger label,
-and message stating these are docs for an in-development version of the
-package. The <code>noindex</code> meta tag is used to ensure that these packages are
-not indexed by search engines.</p></li>
-<li><p><strong>unreleased</strong>: the package is written to <code>docs/</code>, the version gets a "danger"
-label, and the message indicates the package is not yet on CRAN.</p></li>
-</ul>
-
-<p>The default development mode is "release". You can override it by adding a
+<p>You can override the default development mode by adding a
 new <code>development</code> field to <code>_pkgdown.yml</code>, e.g.</p><pre><span class='va'>development</span><span class='op'>:</span>
   <span class='va'>mode</span><span class='op'>:</span> <span class='va'>devel</span>
 </pre>
 
-<p>You can also have pkgdown automatically detect the mode with:</p><pre><span class='va'>development</span><span class='op'>:</span>
-  <span class='va'>mode</span><span class='op'>:</span> <span class='va'>auto</span>
-</pre>
-
-<p>The mode will be automatically determined based on the version number:</p><ul>
-<li><p><code>0.0.0.9000</code> (<code>0.0.0.*</code>): unreleased</p></li>
-<li><p>four version components: development</p></li>
-<li><p>everything else -&gt; release</p></li>
+<p>There are currently four possible modes:</p><ul>
+<li><p><strong>release</strong> (<code>mode: release</code>), the default. Site is written to <code>docs/</code>.
+Version in navbar gets the default colouring.</p></li>
+<li><p><strong>development</strong> (<code>mode: devel</code>). Site is written to <code>docs/dev/</code>.
+Version in navbar gets the "danger" class and a message stating these are
+docs for an in-development version of the package. The <code>noindex</code> meta tag
+is used to ensure that these packages are not indexed by search engines.</p></li>
+<li><p><strong>unreleased</strong> (<code>mode: unreleased</code>). Site is written to <code>docs/</code>.
+Version in navbar gets the "danger" class, and a message indicating the
+package is not yet on CRAN.</p></li>
+<li><p><strong>automatic</strong> (<code>mode: auto</code>): pkgdown automatically detects the mode
+based on the version number:</p><ul>
+<li><p><code>0.0.0.9000</code> (<code>0.0.0.*</code>): unreleased.</p></li>
+<li><p>four version components: development.</p></li>
+<li><p>everything else -&gt; release.</p></li>
+</ul></li>
 </ul>
 
 <p>There are three other options that you can control:</p><pre><span class='va'>development</span><span class='op'>:</span>
@@ -397,11 +400,11 @@ to danger). Finally, you can choose to override the default tooltip with
 <li><p>Reference</p></li>
 <li><p>Articles (i.e., vignettes, if present).</p></li>
 <li><p>News (if present).</p></li>
-<li><p>A "github" icon with a link to your
-github repo (if listed in the <code>DESCRIPTION</code> url field).</p></li>
+<li><p>An icon linking to the source repository (currently only GitHub and GitLab are supported)</p></li>
 </ul>
 
-<p>You can override these defaults with the  <code>navbar</code> field. It has two primary
+<p>You can override (and even remove) these defaults with the  <code>navbar</code> field.
+It has two primary
 components: <code>structure</code> and <code>components</code>. These components interact in
 a somewhat complicated way, but the complexity allows you to make minor
 tweaks to part of the navbar while relying on pkgdown to automatically
@@ -409,7 +412,7 @@ generate the rest.</p>
 <p>The <code>structure</code> defines the layout of the navbar, i.e. the order
 of the components, and whether they're right aligned or left aligned.
 You can use this component to change the order of the default components,
-and to add your own components.</p><pre>navbar:
+remove some default components and add your own components.</p><pre>navbar:
   structure:
     left:  [intro, reference, articles, tutorials, news]
     right: [github]
@@ -432,7 +435,7 @@ The following YAML snippet illustrates some of the most important features.</p><
      - text: "Category B"
      - text: Title B1
        menu:
-       - text "Sub-category B11"
+       - text: "Sub-category B11"
          href: articles/b11.html
      twitter:
        icon: "fab fa-twitter fa-lg"
@@ -559,6 +562,31 @@ time (e.g. because it's only behind the firewall or requires auth).<div class="y
 </pre><p></div></p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="yaml-config-footer"><a class="anchor" href="#yaml-config-footer"></a>YAML config - footer</h2>
+
+    
+
+<p>By default, the footer is automatically populated with:</p><ul>
+<li><p>the names of the
+<a href='https://pkgdown.r-lib.org/reference/build_home.html#yaml-config-authors'>authors <code>authors</code></a>,
+on the left;</p></li>
+<li><p>a reference to pkgdown <code>pkgdown</code>, on the right.</p></li>
+</ul>
+
+<p>The example below puts the authors information on the right together with
+a legal disclaimer, and puts pkgdown on the left.
+Unlike for the navbar or sidebar, components of the footer left/right are
+just pasted together into a string.
+If you want to use paragraphs, you need to use either HTML;
+or a YAML pipe and to start the components with two empty lines.</p><pre>footer:
+  left:
+    structure: [pkgdown]
+  right:
+    structure: [authors, legal]
+    components:
+      legal: Provided without ***any warranty***.
+</pre>
+
     <h2 class="hasAnchor" id="options"><a class="anchor" href="#options"></a>Options</h2>
 
     
@@ -590,11 +618,11 @@ hanging in cron jobs.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://hesselberthlab.org'>Jay Hesselberth</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://hesselberthlab.org" class="external-link">Jay Hesselberth</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>, <a href="https://masalmon.eu" class="external-link">Maëlle Salmon</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -619,6 +647,8 @@ hanging in cron jobs.</p>
 </script>
 
 
+
+  
 
   </body>
 </html>
