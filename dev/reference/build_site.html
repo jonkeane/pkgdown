@@ -443,7 +443,7 @@ The following YAML snippet illustrates some of the most important features.</p><
 </pre>
 
 <p>Components can contain sub-<code>menu</code>s with headings (indicated by missing
-<code>href</code>) and separators (indicated by a bunch of <code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>). You can also use
+<code>href</code>) and separators (indicated by a bunch of <code>-</code>). You can also use
 <code>icon</code>s from <a href='https://fontawesome.com/icons?d=gallery'>fontawesome</a>.</p>
 <p>This yaml would override the default "articles" component,
 and add a new "twitter" component. Unless you explicitly mention new
@@ -542,7 +542,7 @@ supply your own in the <code>repo</code> component:<div class="yaml"></p><pre>re
 </ul>
 
 <p>The varying components (e.g. path, issue number, user name) are pasted on
-the end of these URLs so they should have trailing <code><a href='https://rdrr.io/r/base/Arithmetic.html'>/</a></code>s.</p>
+the end of these URLs so they should have trailing <code>/</code>s.</p>
 <p>pkgdown defaults to using the "master" branch for source file URLs. This can
 be configured to use a specific branch when linking to source files by
 specifying a branch name:<div class="yaml"></p><pre><span class='va'>repo</span><span class='op'>:</span>
@@ -592,21 +592,21 @@ or a YAML pipe and to start the components with two empty lines.</p><pre>footer:
     
 
 <p>Users with limited internet connectivity can disable CRAN checks by setting
-<code><a href='https://rdrr.io/r/base/options.html'>options(pkgdown.internet = FALSE)</a></code>. This will also disable some features
+<code>options(pkgdown.internet = FALSE)</code>. This will also disable some features
 from pkgdown that requires an internet connectivity. However, if it is used
 to build docs for a package that requires internet connectivity in examples
 or vignettes, this connection is required as this option won't apply on them.</p>
 <p>Users can set a timeout for <code>build_site(new_process = TRUE)</code> with
-<code><a href='https://rdrr.io/r/base/options.html'>options(pkgdown.timeout = Inf)</a></code>, which is useful to prevent stalled builds from
+<code>options(pkgdown.timeout = Inf)</code>, which is useful to prevent stalled builds from
 hanging in cron jobs.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>build_site</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>build_site</span><span class='op'>(</span>override <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>destination <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>build_site</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>build_site</span><span class='op'>(</span>override <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>destination <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
